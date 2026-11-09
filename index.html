@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi Horror 3D: Kelas Terkutuk</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>KELAS TERKUTUK</h1>
+        <p>Anda terjebak di ruang kelas sekolah malam hari yang penuh misteri. Cari meja-meja altar ujian matematika, hindari hantu guru yang berpatroli, dan pecahkan teka-teki untuk keluar!</p>
+        <button class="btn-horror" id="start-btn">MASUKI KELAS</button>
+        <div class="controls-hint">Kontrol: <strong>W, A, S, D</strong> untuk bergerak, <strong>Mouse</strong> untuk melihat, <strong>Klik</strong> untuk berinteraksi.</div>
+    </div>
+
+    <div id="canvas-container"></div>
+    <div id="crosshair"></div>
+    <div id="flashlight-overlay"></div>
+    <div id="flash"></div>
+
+    <!-- Peta Mini (Minimap) di Pojok Kiri Atas -->
+    <div id="minimap-container">
+        <div id="minimap-title">PETA KELAS</div>
+        <canvas id="minimap-canvas" width="120" height="120"></canvas>
+    </div>
+
+    <div id="ui-layer">
+        <div id="top-hud">
+            <div class="hud-panel stat-item" id="score-display">Teka-Teki Selesai: 0 / 3</div>
+            <div class="hud-panel stat-item" id="status-display">Status: Cari Meja Altar Ujian</div>
+        </div>
+    </div>
+
+    <div id="puzzle-modal">
+        <h2 id="puzzle-title">UJIAN MATEMATIKA</h2>
+        <div id="puzzle-question">Pertanyaan Matematika...</div>
+        <input type="number" id="puzzle-answer-input" class="puzzle-input" placeholder="Masukkan jawaban...">
+        <br>
+        <button class="btn-horror" id="submit-answer-btn">KIRIM JAWABAN</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

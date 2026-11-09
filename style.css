@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000;
+    color: #e0e0e0;
+}
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* Efek Senter Gelap */
+#flashlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 10%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.98) 75%);
+    z-index: 4;
+}
+/* Peta Mini di Pojok Kiri */
+#minimap-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 2px solid #8b0000;
+    border-radius: 6px;
+    padding: 8px;
+    z-index: 15;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    pointer-events: none;
+    text-align: center;
+}
+#minimap-title {
+    font-size: 0.75rem;
+    color: #ff4d4d;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+#minimap-canvas {
+    background: #050505;
+    display: block;
+    border-radius: 3px;
+}
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 10;
+}
+.hud-panel {
+    background: rgba(10, 10, 10, 0.85);
+    border: 1px solid #4a0000;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    pointer-events: auto;
+}
+#top-hud {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.stat-item {
+    font-size: 1.1rem;
+    color: #ff3333;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+}
+#puzzle-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(15, 5, 5, 0.95);
+    border: 2px solid #8b0000;
+    padding: 30px;
+    width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    display: none;
+    pointer-events: auto;
+    z-index: 20;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+#puzzle-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+#puzzle-modal h2 {
+    color: #ff4d4d;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+#puzzle-question {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.puzzle-input {
+    width: 100%;
+    padding: 10px;
+    background: #1a0000;
+    border: 1px solid #ff3333;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.btn-horror {
+    background: #4a0000;
+    color: #ff9999;
+    border: 1px solid #ff3333;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.btn-horror:hover {
+    background: #7a0000;
+    color: #fff;
+}
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #1a0505 0%, #000000 90%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 30;
+    text-align: center;
+    padding: 20px;
+}
+#start-screen h1 {
+    font-size: 3rem;
+    color: #cc0000;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+}
+#start-screen p {
+    max-width: 600px;
+    color: #aaa;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+#flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 25;
+    transition: opacity 0.1s;
+}
